@@ -85,7 +85,7 @@ def test_find_suitable_user():
 # "Open Browser [Chrome]"
 
 def output_name_and_arguments_function(name, *args):
-    name_function = [i.capitalize() for i in name.__name__.split('_')]
+    name_function = [i.capitalize() for i in name.split('_')]
     name_and_arguments = f"{' '.join(name_function)} [{', '.join(args)}]"
     print(name_and_arguments)
     return name_and_arguments
@@ -98,15 +98,16 @@ def test_readable_function():
 
 
 def open_browser(browser_name):
-    actual_result = output_name_and_arguments_function(open_browser, browser_name)
+    actual_result = output_name_and_arguments_function(open_browser.__name__, browser_name)
     assert actual_result == "Open Browser [Chrome]"
 
 
 def go_to_companyname_homepage(page_url):
-    actual_result = output_name_and_arguments_function(go_to_companyname_homepage, page_url)
+    actual_result = output_name_and_arguments_function(go_to_companyname_homepage.__name__, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = output_name_and_arguments_function(find_registration_button_on_login_page, page_url, button_text)
+    actual_result = output_name_and_arguments_function(find_registration_button_on_login_page.__name__, page_url, button_text)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
+find_registration_button_on_login_page
